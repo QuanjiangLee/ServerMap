@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Host maps</title>
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <style type="text/css">
+  	* {
+  		margin: 0px;
+  		padding: 0px;
+  	}
+    nav {
+        width: 100%;
+        height: 60px;
+        font-size: 20px;
+        background-color: #19b180;
+        border:1px solid #76927c;
+    }
+    .container {
+    	display: flex;
+    	width: 100%;
+
+    }
+    .item {
+    	width: 220px;
+    	height: 280px;
+    	background-color: rgba(78, 86, 138, 0.61); 
+    }
+    .search {
+    	width: 100%;
+    	display: inline-flex;
+    	justify-content: center;
+        margin-top: 50px;
+    	margin-bottom: 30px;
+    }
+    .sinput {
+    	display: inline-block;
+    	height: 50px;
+    	width: 45%;
+    	font-size: 18px;
+    }
+    .sbt {
+    	display: inline-block;
+    	outline: none;
+    	width: 60px;
+    	background: #13b17e;
+    	border: none;
+    	border-bottom-right-radius: 6%;
+        border-top-right-radius: 6%;
+        cursor: pointer;
+        font-size: 18px;
+    }
+  </style>
+  <body>
+    <nav>你好，世界！</nav>
+    <div class="search">
+    <input type="text" placeholder="搜索..." class="sinput">
+    <input type="button" class="sbt" name="search" value="搜索">
+	</div>
+    <div class="container">
+    	
+    	<div class="item"></div>
+    </div>
+    <script src="/static/js/jquery-1.12.4.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+  </body>
+</html>
