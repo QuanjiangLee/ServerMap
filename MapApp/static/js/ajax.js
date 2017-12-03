@@ -21,12 +21,12 @@ if (request == null){
 }
 
 
-function getRequest(url,data,func){
+function getRequest(url, data, type, func){
    // request.onreadystatechange = 
 	let request = createRequest();
 	var urlArgs = url + "?" + data;
 	alert(urlArgs)
-	request.open("GET",urlArgs,true);
+	request.open("GET",urlArgs,type);
 	request.onreadystatechange = function(){
 		if (request.readyState == 4){
 		if (request.status == 200){
@@ -47,10 +47,10 @@ function getRequest(url,data,func){
 	request.send(null);
     }
 
-function postRequest(url,data,func) {
+function postRequest(url, data, type, func) {
  	// body...
  	let request = createRequest();
-	request.open("POST",url,true);
+	request.open("POST",url,type);
 	request.onreadystatechange = function(){
 		if (request.readyState == 4){
 		if (request.status == 200){
@@ -66,7 +66,14 @@ function postRequest(url,data,func) {
 		} 
 	//request.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 	//request.setRequestHeader("Content-Type","text/xml");
-	request.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+	//request.setRequestHeader("X-Requested-With", "XMLHttpRequest");
 	request.setRequestHeader("Content-Type","application/json;charset=UTF-8");
 	request.send(JSON.stringify(data));
  }
+function httpGet(theUrl)
+{
+    var xmlHttp = createRequest();
+    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
+}

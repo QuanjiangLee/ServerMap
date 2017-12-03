@@ -18,6 +18,11 @@ from django.contrib import admin
 from MapApp import views
 
 urlpatterns = [
-	url(r'^$', views.index,name='index'),
+	url(r'^$', views.login, name='login'),
+	url(r'^login/', views.login, name='login'),
+	url(r'^accounts/login/', views.login),
+	url(r'^verifyLogin/', views.verifyLogin),
+	url(r'^userLoginOut/', views.userLoginOut),
+	url(r'^index/*', views.index),
     url(r'^admin/', admin.site.urls),
 ]
