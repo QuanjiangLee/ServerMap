@@ -24,5 +24,9 @@ urlpatterns = [
 	url(r'^verifyLogin/', views.verifyLogin),
 	url(r'^userLoginOut/', views.userLoginOut),
 	url(r'^index/*', views.index),
+    url(r'^delHost/', views.delHost),
+    url(r'^addHost/', views.addHost),
+    url(r'^updateHost/', views.updateHost),
+    url(r'^filterHost/', views.filterHost),
     url(r'^admin/', admin.site.urls),
 ]

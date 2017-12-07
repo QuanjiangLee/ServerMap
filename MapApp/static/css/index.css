@@ -103,7 +103,7 @@
     outline:none;
     }
     .span-edit:focus {
-    border-bottom: 2px #399cb9 solid;        
+    border-bottom: 2.5px #399cb9 solid;        
     }
     .btn-link {
         font-size: 18px;
@@ -127,7 +127,8 @@
     .new-host {
         display: inline-block;
         position: relative;
-        margin: auto 50px;
+        /*margin: auto 50px;*/
+        margin: 50% 25%;
         width: 60px;
         height: 60px;
         border-radius: 50%;
@@ -137,6 +138,11 @@
         font-weight: unset;
         background-color: #32bfa5;
 }
+    .content-add {
+        width: 250px;
+        min-height: 280px;
+        margin: 10px;
+    }
     .bottom-add {
         position: fixed;
         right: 20px;

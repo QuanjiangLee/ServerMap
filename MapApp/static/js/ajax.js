@@ -21,11 +21,12 @@ if (request == null){
 }
 
 
+//data type like "hello='world'&hi=56
 function getRequest(url, data, type, func){
    // request.onreadystatechange = 
 	let request = createRequest();
 	var urlArgs = url + "?" + data;
-	alert(urlArgs)
+	//alert(urlArgs)
 	request.open("GET",urlArgs,type);
 	request.onreadystatechange = function(){
 		if (request.readyState == 4){
@@ -42,8 +43,8 @@ function getRequest(url, data, type, func){
 		} 
 	request.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 	//request.setRequestHeader("Content-Type","text/xml");
-	request.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-	request.setRequestHeader("Content-Type","application/json;charset=UTF-8");
+	//request.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+	//request.setRequestHeader("Content-Type","application/json;charset=UTF-8");
 	request.send(null);
     }
 

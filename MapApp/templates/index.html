@@ -31,8 +31,41 @@
         }
     }
     function addHost(elem) {
-
+        var html = "";
+        html += '<div class="item"><div class="item-nav" style="height: 36px">';
+        html += '<button class="remove" onclick="removeAdd(this)">×</button></div>';
+        html += '<div class="item-content"><ul class="item-li">';
+        html += '<li class="li-add">hostName:<span contenteditable="true" class="hostName span-edit"></span></li>';
+        html += '<li class="li-add">Ip:<span contenteditable="true" class="hostIp span-edit"></span></li>';
+        html += '<li class="li-add">Port:<span contenteditable="true" class="hostPort span-edit"></span></li>';
+        html += '</ul><div class="alter-info">';  
+        html += '<button onclick="addHostSubmit(this)" class="btn btn-primary" name="submit">submit</button>';   
+        html += '<button onclick="removeAdd(this)" class="btn btn-warning">Abort</button>';       
+        html += '</div></div></div>';
+        $(".content-add").before(html);
+        $(".li-add").css("border-bottom","none"); 
+        $(".hostName[contenteditable='true']").focus();
     }
+    function addHostSubmit(elem){
+        var item = $(elem).parents(".item-content");
+        var hostName = item.find(".hostName").text();
+        var hostIp = item.find(".hostIp").text();
+        var hostPort = item.find(".hostPort").text();
+        data = {'hostName': hostName, 'hostIp': hostIp, 'hostPort': hostPort};
+        //alert(hostName)
+        //alert(hostIp)
+        //alert(hostPort)
+        postRequest("/addHost/",data,true,addHostResult);
+    }
+
+    function addHostResult(ret) {
+        if(ret['ret'] == true){
+            alert("add host success!");
+        }else{
+            alert("add host error!");
+        }
+    }
+
     function alterHost(elem) {
         var item = $(elem).parents(".item").children().eq(1).children(".item-li").find("li");
         var itemBtn = $(elem).parents(".item").children().eq(1).children(".alter-info");
@@ -42,8 +75,45 @@
         item.filter(".enter-li").css("display","none");
         itemBtn.css("display","flex");
     }
-    function delHost(elem) {
 
+    function alterSubmit(elem){
+        var item = $(elem).parents(".item-host");
+        var hostId = item.parents(".item").attr("data-tid");
+        var hostName = item.find(".hostName").text();
+        var hostIp = item.find(".hostIp").text();
+        var hostPort = item.find(".hostPort").text();
+        data = {'hostId':hostId, 'hostName': hostName, 'hostIp': hostIp, 'hostPort': hostPort};
+        //alert(hostId)
+        //alert(hostIp)
+        //alert(hostPort)
+        postRequest("/updateHost/",data,true,alterHostResult);
+    }
+
+    function alterHostResult(ret){
+        if(ret['ret'] == true){
+            alert("alter Host is success!");
+        }else{
+            alert("alter Host is error!");
+        }
+    }
+    function delHost(elem) {
+        //comfirm to delete host?
+       var reply = confirm("are you sure to delete?")
+       if(reply == true){
+            var hostId = $(elem).parents(".item").attr("data-tid");
+            //alert(hostId);
+            data = {'hostId': hostId}
+            postRequest("/delHost/",data,true,delHostResult);
+        }else{
+            alert("you are abotered it!")
+        }
+    }
+    function delHostResult(ret){
+        if(ret['ret'] == true){
+            alert("delete host success!");
+        }else {
+            alert("delete host error!");
+        }
     }
     function alterReset(elem) {
         var items = $(elem).parent().parent().find(".item-li span");
@@ -52,6 +122,33 @@
     function alterAbort(elem) {
 
     }
+    function removeAdd(elem) {
+        $(elem).parents(".item").remove();
+    }
+
+function filterHost() {
+    var keyWords = $("input[name='sinput']").val();
+    //alert(keyWords)
+    getRequest("/filterHost/", "keyWords="+keyWords, true, filterHostResult);
+}
+function enterSearch(){
+    $("input[name = 'sinput']").keydown(function(event){  
+        if(event.which == "13")      
+            filterHost(); 
+    })
+}
+function filterHostResult(ret) {
+    if(ret) {
+        var newDoc = document.open("text/html", "replace");
+        newDoc.write(ret);
+        newDoc.close();
+    }
+}
+   /* function btnClick(){
+        $("btn-fade").click(function(){
+            $("this").css("background-color","#00f");
+        });
+    }*/
   </script>
   </head>
   <body>
@@ -59,15 +156,16 @@
         <button type="text" onclick="logout()" class="btn btn-link logout" style="float: right;font-size: 20px;color:black;">Logout!</button>
     </nav>
     <div class="search">
-    <input type="text" placeholder="搜索..." class="sinput">
-    <input type="button" class="sbt" name="search" value="搜索">
+    <input type="text" onfocus="enterSearch()" placeholder="搜索..." name="sinput" class="sinput">
+    <input type="button" onclick="filterHost()" class="sbt" name="search" value="搜索">
 	</div>
     <div class="container">    	
     {% include 'host.html' %}
-    <button class="new-host">+</button> 
+    <div  class="content-add">
+    <button onclick="addHost(this)" class="new-host btn-fade">+</button> 
     </div>
     <div class="bottom-add">
-        <button class="new-host">+</button>
+        <button onclick="addHost(this)" class="new-host btn-fade" style="margin: auto 50px;">+</button>
     </div>
     <script src="/static/js/jquery-1.12.4.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
