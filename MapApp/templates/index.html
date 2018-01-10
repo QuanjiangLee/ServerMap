@@ -61,8 +61,10 @@
     function addHostResult(ret) {
         if(ret['ret'] == true){
             alert("add host success!");
+            location.reload()
         }else{
             alert("add host error!");
+            location.reload()
         }
     }
 
@@ -92,8 +94,10 @@
     function alterHostResult(ret){
         if(ret['ret'] == true){
             alert("alter Host is success!");
+            location.reload()
         }else{
             alert("alter Host is error!");
+            location.reload()
         }
     }
     function delHost(elem) {
@@ -111,6 +115,7 @@
     function delHostResult(ret){
         if(ret['ret'] == true){
             alert("delete host success!");
+            location.reload()
         }else {
             alert("delete host error!");
         }
@@ -120,7 +125,7 @@
         items.text("");
     }
     function alterAbort(elem) {
-
+        location.reload()
     }
     function removeAdd(elem) {
         $(elem).parents(".item").remove();
