@@ -5,23 +5,23 @@
         <div class="dropdown">       
             <svg viewBox="0 0 24 24" class="svg-more dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><g><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path></g></svg>
             <ul class="dropdown-menu" >
-            <li class="add-host" onclick="addHost(this)"><a href="javascript:void(0);">Add</a></li>
-            <li class="alter-host" onclick="alterHost(this)"><a href="javascript:void(0);">alter</a></li>
-            <li class="del-host" onclick="delHost(this)"><a href="javascript:void(0);">delete</a></li>
+            <li class="add-host" onclick="addHost(this)"><a href="javascript:void(0);">添加</a></li>
+            <li class="alter-host" onclick="alterHost(this)"><a href="javascript:void(0);">修改</a></li>
+            <li class="del-host" onclick="delHost(this)"><a href="javascript:void(0);">删除</a></li>
             </ul>
         </div>
  </div>
  <div class="item-host">
      <ul class="item-li">
-        <li>hostName:<span contenteditable="false" class="hostName">{{ list.hostName }}</span></li>
-        <li>Ip:<span contenteditable="false" class="hostIp">{{ list.IPAddress }}</span></li>
-        <li>Port:<span contenteditable="false" class="hostPort">{{ list.hostPort }}</span></li>
-        <li class="enter-li">enter:<a href="http://{{ list.IPAddress }}:{{ list.hostPort }}" target="_blank" class="hostUrl"><strong class="btn btn-link">{{ list.hostName }}</strong></a></li>
+        <li>主机名:<span contenteditable="false" class="hostName">{{ list.hostName }}</span></li>
+        <li>ip地址:<span contenteditable="false" class="hostIp">{{ list.IPAddress }}</span></li>
+        <li>端口号:<span contenteditable="false" class="hostPort">{{ list.hostPort }}</span></li>
+        <li class="enter-li">进入:<a href="http://{{ list.IPAddress }}:{{ list.hostPort }}" target="_blank" class="hostUrl"><strong class="btn btn-link">{{ list.hostName }}</strong></a></li>
      </ul>
      <div class="alter-info" style="display: none;">
-        <button onclick="alterReset(this)" class="btn btn-info" name="reset">reset</button>
-        <button onclick="alterSubmit(this)" class="btn btn-primary" name="submit">submit</button>
-        <button onclick="alterAbort(this)" class="btn btn-warning">Abort</button>
+        <button onclick="alterReset(this)" class="btn btn-info" name="reset">重置</button>
+        <button onclick="alterSubmit(this)" class="btn btn-primary" name="submit">提交</button>
+        <button onclick="alterAbort(this)" class="btn btn-warning">撤销</button>
      </div>
      <span class="create-time">{{ list.createTime }}</span>
  </div>

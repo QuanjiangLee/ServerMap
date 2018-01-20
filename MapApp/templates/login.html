@@ -61,7 +61,7 @@
 				data = {'userNo':username, 'passwd':password}
 				postRequest("/verifyLogin/",data,true,verifyResult);
 			}else {
-				alert("username or password is not should null!")
+				alert("用户名或密码不能为空!")
 			}
 		}
 		function verifyResult(ret){

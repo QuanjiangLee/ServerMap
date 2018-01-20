@@ -28,14 +28,14 @@ def verifyLogin(request):
         passwd = data['passwd']
     print('userNo',userNo)
     print('passwd',passwd)
-    user = authenticate(request,username = userNo, password = passwd)
+    user = authenticate(username = userNo, password = passwd)
     if user is not None:
         auth_login(request,user)
         sessionId=request.session.session_key 
         response = {'result':True, 'sessionId':sessionId}
         return HttpResponse(json.dumps(response), content_type='application/json;charset=utf-8')
     else:
-        response = {'result':False, 'error': "username or password is error!"}
+        response = {'result':False, 'error': "用户名或密码错误!"}
         return HttpResponse(json.dumps(response), content_type='application/json;charset=utf-8')
 
 @csrf_exempt

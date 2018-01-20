@@ -35,12 +35,12 @@
         html += '<div class="item"><div class="item-nav" style="height: 36px">';
         html += '<button class="remove" onclick="removeAdd(this)">×</button></div>';
         html += '<div class="item-content"><ul class="item-li">';
-        html += '<li class="li-add">hostName:<span contenteditable="true" class="hostName span-edit"></span></li>';
-        html += '<li class="li-add">Ip:<span contenteditable="true" class="hostIp span-edit"></span></li>';
-        html += '<li class="li-add">Port:<span contenteditable="true" class="hostPort span-edit"></span></li>';
+        html += '<li class="li-add">主机名:<span contenteditable="true" class="hostName span-edit"></span></li>';
+        html += '<li class="li-add">ip地址:<span contenteditable="true" class="hostIp span-edit"></span></li>';
+        html += '<li class="li-add">端口号:<span contenteditable="true" class="hostPort span-edit"></span></li>';
         html += '</ul><div class="alter-info">';  
-        html += '<button onclick="addHostSubmit(this)" class="btn btn-primary" name="submit">submit</button>';   
-        html += '<button onclick="removeAdd(this)" class="btn btn-warning">Abort</button>';       
+        html += '<button onclick="addHostSubmit(this)" class="btn btn-primary" name="submit">提交</button>';   
+        html += '<button onclick="removeAdd(this)" class="btn btn-warning">撤销</button>';       
         html += '</div></div></div>';
         $(".content-add").before(html);
         $(".li-add").css("border-bottom","none"); 
@@ -60,10 +60,10 @@
 
     function addHostResult(ret) {
         if(ret['ret'] == true){
-            alert("add host success!");
+            alert("成功添加主机信息!");
             location.reload()
         }else{
-            alert("add host error!");
+            alert("添加主机信息失败!");
             location.reload()
         }
     }
@@ -93,31 +93,31 @@
 
     function alterHostResult(ret){
         if(ret['ret'] == true){
-            alert("alter Host is success!");
+            alert("成功修改主机信息!");
             location.reload()
         }else{
-            alert("alter Host is error!");
+            alert("修改主机信息失败!");
             location.reload()
         }
     }
     function delHost(elem) {
         //comfirm to delete host?
-       var reply = confirm("are you sure to delete?")
+       var reply = confirm("您确认要删除吗?")
        if(reply == true){
             var hostId = $(elem).parents(".item").attr("data-tid");
             //alert(hostId);
             data = {'hostId': hostId}
             postRequest("/delHost/",data,true,delHostResult);
         }else{
-            alert("you are abotered it!")
+            alert("你取消了删除操作!")
         }
     }
     function delHostResult(ret){
         if(ret['ret'] == true){
-            alert("delete host success!");
+            alert("删除主机信息成功!");
             location.reload()
         }else {
-            alert("delete host error!");
+            alert("删除主机信息失败!");
         }
     }
     function alterReset(elem) {
@@ -157,8 +157,8 @@ function filterHostResult(ret) {
   </script>
   </head>
   <body>
-    <nav>你好，世界！
-        <button type="text" onclick="logout()" class="btn btn-link logout" style="float: right;font-size: 20px;color:black;">Logout!</button>
+    <nav>
+        <button type="text" onclick="logout()" class="btn btn-link logout" style="float: right;font-size: 20px;color:black;">注销>></button>
     </nav>
     <div class="search">
     <input type="text" onfocus="enterSearch()" placeholder="搜索..." name="sinput" class="sinput">
